@@ -64,11 +64,11 @@
     //###start
     //**start** animation loop 
     FrAnim.prototype.start = function() {
+        this.isRunning = true;
         var updateThis;
         var drawThis;
         var self = this;
         var ctx = this.canvas.context;
-
         //**run** `setup` once and save its returned `object` in `updateThis` variable
         updateThis = this.func.setup(ctx);
         updateThis = (typeof updateThis != 'object') ? {} :updateThis;
@@ -90,8 +90,11 @@
             temp = self.func.draw.call(drawThis,ctx);
             updateThis = (typeof temp != 'object') ? updateThis : temp;
 
-            //**if** `requestId` is `0` it means that `stop` is called so we should not call `requestAnimationFrame` again
-            if (self.requestId !== 0) {
+            //**if** `isRunning` is `false` it means that `stop` is called so we should  call `cancelAnimationFrame` and reset requestId
+            if (self.isRunning === false) {
+                window.cancelAnimationFrame(self.requestId);
+                self.requestId = 0;
+            }else{
                 window.requestAnimationFrame(callback);
             }
         });
@@ -101,10 +104,9 @@
 
 
     //###Stop
-    //**Stop** animation loop and reset requestId
-    FrAnim.prototype.stop = function() {
-        window.cancelAnimationFrame(this.requestId);
-        this.requestId = 0;
+    //**Stop** animation loop
+    FrAnim.prototype.stop = function() {        
+        this.isRunning = false;
         return this;
     };
 
