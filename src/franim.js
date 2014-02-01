@@ -63,7 +63,7 @@
 
     //###start
     //**start** animation loop 
-    FrAnim.prototype.start = function() {
+    FrAnim.prototype.start = function(opt) {
         this.isRunning = true;
         var updateThis;
         var drawThis;
@@ -77,7 +77,7 @@
         this.requestId = window.requestAnimationFrame(function callback(time) {
 
             // **call** `recalculate` in case window size has changed
-            self.canvas.recalculate();
+            if(opt.autoResize) self.canvas.recalculate();
 
             //**call** `update` function on `updateThis` and pass `time` as argument.
             //if it returns `object` it will be used for `draw` function otherwise 
