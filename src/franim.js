@@ -41,11 +41,11 @@
             init:function () {
                 throw "init function isn't set";
             },
+            update:function () {
+                throw "update function isn't set";
+            },
             draw:function () {
                 throw "draw function isn't set";
-            },
-            animate:function () {
-                throw "animate function isn't set";
             }
         };
     }
@@ -63,21 +63,31 @@
 
     //###start
     //**start** animation loop 
-    FrAnim.prototype.start = function(opt) {
+    FrAnim.prototype.start = function(userConfig) {
+        var config = {
+            autoResize : true,
+            setupThis  : {}
+        },  updateThis, 
+            drawThis, 
+            self = this, 
+            ctx = this.canvas.context;
+        //**rewrite** user configuration to default config if type matches
+        if (userConfig)
+            for(var key in config)
+                if(typeof userConfig[key] == typeof config[key])
+                    config[key] = userConfig[key];
+
+
         this.isRunning = true;
-        var updateThis;
-        var drawThis;
-        var self = this;
-        var ctx = this.canvas.context;
-        //**run** `setup` once and save its returned `object` in `updateThis` variable
-        updateThis = this.func.setup(ctx);
-        updateThis = (typeof updateThis != 'object') ? {} :updateThis;
+        //**call** `setup` once on `setupThis` and save its returned `object` in `updateThis` variable
+        updateThis = this.func.setup.call(config.setupThis,ctx);
+        updateThis = (typeof updateThis != 'object') ? config.setupThis : updateThis;
 
         //**save** `requestId` for stopping animation loop if needed
         this.requestId = window.requestAnimationFrame(function callback(time) {
 
-            // **call** `recalculate` in case window size has changed
-            if(opt.autoResize) self.canvas.recalculate();
+            // **call** `recalculate` if `autoResize` is on
+            if(config.autoResize) self.canvas.recalculate();
 
             //**call** `update` function on `updateThis` and pass `time` as argument.
             //if it returns `object` it will be used for `draw` function otherwise 
@@ -85,7 +95,7 @@
             var temp = self.func.update.call(updateThis,time);
             drawThis = (typeof temp != 'object') ? updateThis :temp;
             
-            //**call** draw function `drawThis` and pass **Canvas Context** as argument.
+            //**call** draw function on `drawThis` and pass **Canvas Context** as argument.
             //it it returns `object` call `update` on in in next frame
             temp = self.func.draw.call(drawThis,ctx);
             updateThis = (typeof temp != 'object') ? updateThis : temp;
