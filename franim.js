@@ -54,7 +54,9 @@ function franim(context) {
             isRunning = false;
         }
     };
-    context.setup(ctx);
+    if (typeof context.setup === 'function') {
+        context.setup(ctx);
+    }
     requestId = window.requestAnimationFrame(animationCallback);
 
     return context;
