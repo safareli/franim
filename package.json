@@ -1,6 +1,6 @@
 {
   "name": "franim",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "canvas helper library",
   "homepage": "https://github.com/Safareli/franim",
   "main": "framin.js",
@@ -26,7 +26,9 @@
   },
   "keywords": [
     "canvas",
-    "helper"
+    "helper",
+    "browser",
+    "browserify"
   ],
   "readmeFilename": "README.md",
   "devDependencies": {
