@@ -1,9 +1,9 @@
 'use strict';
 
-function franim(context) {
+function franim(canvaseId, context) {
     var width  =  window.innerWidth,
         height = window.innerHeight,
-        domElement = document.getElementById(context.config.canvaseId),
+        domElement = document.getElementById(canvaseId),
         isRunning = true,
         requestId,
         ctx = domElement.getContext('2d');
@@ -21,7 +21,7 @@ function franim(context) {
     }
 
     function animationCallback(time) {
-        if (context.config.autoResize) {
+        if (context.config.fullSize) {
             recalculate();
         }
 
@@ -42,10 +42,10 @@ function franim(context) {
 
     context.anim = {
         getHeight: function () {
-            return height;
+            return (context.config.fullSize) ? height : domElement.height;
         },
         getWidth: function () {
-            return width;
+            return (context.config.fullSize) ? width : domElement.width;
         },
         resume: function () {
             requestId = window.requestAnimationFrame(animationCallback);
