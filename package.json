@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "description": "canvas helper library",
   "homepage": "https://github.com/Safareli/franim",
-  "main": "framin.js",
+  "main": "franim.js",
   "bugs": {
     "url": "https://github.com/Safareli/franim/issues"
   },
