@@ -21,7 +21,7 @@ function franim(canvaseId, context) {
     }
 
     function animationCallback(time) {
-        if (context.config.fullSize) {
+        if (context.config && context.config.fullSize) {
             recalculate();
         }
 
@@ -42,10 +42,10 @@ function franim(canvaseId, context) {
 
     context.anim = {
         getHeight: function () {
-            return (context.config.fullSize) ? height : domElement.height;
+            return (context.config && context.config.fullSize) ? height : domElement.height;
         },
         getWidth: function () {
-            return (context.config.fullSize) ? width : domElement.width;
+            return (context.config && context.config.fullSize) ? width : domElement.width;
         },
         resume: function () {
             requestId = window.requestAnimationFrame(animationCallback);
