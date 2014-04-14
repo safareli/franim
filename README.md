@@ -24,6 +24,23 @@ var wrap = franim('elementid', {
 });
 ```
 
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [arguments](#user-content-arguments)
+	- [elementId](#user-content-elementid)
+	- [context](#user-content-context)
+	- [context.config.fullSize](#user-content-contextconfigfullsize)
+	- [context.init](#user-content-contextinit)
+	- [context.update](#user-content-contextupdate)
+	- [context.draw](#user-content-contextdraw)
+- [this.anim](#user-content-thisanim)
+	- [this.anim.pause()](#user-content-thisanimpause)
+	- [this.anim.resume()](#user-content-thisanimresume)
+	- [this.anim.getHeight()](#user-content-thisanimgetheight)
+	- [this.anim.getWidth()](#user-content-thisanimgetwidth)
+- [License](#user-content-license)
+
+
 ##arguments
 ###elementId 
 Type: `String`
