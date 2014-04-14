@@ -43,7 +43,7 @@ Default: `false`
 
 if true make canvas element fit whole window
 
-###context.config.init
+###context.init
 Type: `Function` 
 _optional_
 it is called once before animation is started and context is passed to it as argument
@@ -51,7 +51,7 @@ it is called once before animation is started and context is passed to it as arg
 `function setup(ctx)`
 
 
-###context.config.update
+###context.update
 Type: `Function` 
 _optional_
 it is called on every frame before `draw` and AnimationFrame's `time` argument is passed to it as argument 
@@ -59,7 +59,7 @@ it is called on every frame before `draw` and AnimationFrame's `time` argument i
 `function update(time)`
 
 
-###context.config.draw
+###context.draw
 Type: `Function` 
 *required*
 it is called on every frame, after `update` (if is defined) and context is passed to it as argument 
@@ -72,7 +72,7 @@ if `update` is not defined then context is passed to it as a first argument and 
 
 ---
 
-###this.anim 
+##this.anim 
 here is api to control animation loop and some helper functions
 
 ####this.anim.pause()
