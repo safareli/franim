@@ -1,5 +1,7 @@
-# FrAnim [![NPM version][npm-image]][npm-url] [![NPM version][depstat-image]][depstat-url]
+# FrAnim [![NPM version][npm-image]][npm-url] [![NPM version][depstat-image]][depstat-url] 
 > sample html canvas animation loop wrapper
+
+[![NPM][nodei-image]][npm-url]
 
 
 ## Usage
@@ -142,3 +144,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 [depstat-url]: https://gemnasium.com/Safareli/franim
 [depstat-image]: http://img.shields.io/gemnasium/Safareli/franim.svg
+
+[nodei-image]: https://nodei.co/npm/franim.png?mini=true
