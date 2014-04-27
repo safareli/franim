@@ -1,7 +1,17 @@
-# FrAnim [![NPM version][npm-image]][npm-url] [![NPM version][depstat-image]][depstat-url] 
+# franim [![NPM version][npm-image]][npm-url] [![Code Climate][climate-image]][climate-url]
 > sample html canvas animation loop wrapper
 
-[![NPM][nodei-image]][npm-url]
+[![NPM franim][nodei-image]][npm-url]
+
+[npm-url]: https://npmjs.org/package/franim
+[npm-image]: https://badge.fury.io/js/franim.png
+
+[climate-url]: https://codeclimate.com/github/safareli/franim
+[climate-image]: https://codeclimate.com/github/safareli/franim.png
+
+[nodei-image]: https://nodei.co/npm-dl/franim.png?months=1
+
+
 
 
 ## Usage
@@ -136,13 +146,3 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
-
- 
-
-[npm-url]: https://npmjs.org/package/franim
-[npm-image]: https://badge.fury.io/js/franim.png
-
-[depstat-url]: https://gemnasium.com/Safareli/franim
-[depstat-image]: http://img.shields.io/gemnasium/Safareli/franim.svg
-
-[nodei-image]: https://nodei.co/npm/franim.png?mini=true
