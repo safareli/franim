@@ -40,7 +40,7 @@ function franim(canvaseId, context) {
         //animationCallback untile user comes back;
         //and when user returnes delta will be old one
         if(time - lastTime < 500){
-            delta = (lastTime - time)/1000
+            delta = (lastTime - time)/1000;
         }
         lastTime = time;
 
