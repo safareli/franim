@@ -6,6 +6,9 @@ function franim(canvaseId, context) {
         domElement = document.getElementById(canvaseId),
         isRunning = true,
         requestId,
+        startTime = 0,
+        lastTime = 0,
+        delta = 0,
         ctx = domElement.getContext('2d');
 
     domElement.width = width;
@@ -31,6 +34,15 @@ function franim(canvaseId, context) {
         } else {
             context.draw(ctx, time);
         }
+        //if time beatvin last call and this call is more 
+        //then 500 we don't change delta becouse it is coused
+        //by user living current tab and browser willnot call 
+        //animationCallback untile user comes back;
+        //and when user returnes delta will be old one
+        if(time - lastTime < 500){
+            delta = (lastTime - time)/1000
+        }
+        lastTime = time;
 
         if (isRunning === false) {
             window.cancelAnimationFrame(requestId);
@@ -46,6 +58,9 @@ function franim(canvaseId, context) {
         },
         getWidth: function () {
             return (context.config && context.config.fullSize) ? width : domElement.width;
+        },
+        getDelta: function () {
+            return delta;
         },
         resume: function () {
             requestId = window.requestAnimationFrame(animationCallback);

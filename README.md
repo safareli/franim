@@ -50,6 +50,7 @@ var wrap = franim('elementid', {
 	- [this.anim.resume()](#user-content-thisanimresume)
 	- [this.anim.getHeight()](#user-content-thisanimgetheight)
 	- [this.anim.getWidth()](#user-content-thisanimgetwidth)
+	- [this.anim.getDelta()](#user-content-thisanimgetdelta)
 - [License](#user-content-license)
 
 
@@ -113,10 +114,14 @@ it request Animation Frame and starts loop
 ####this.anim.getHeight()
 returns height of canvas element
 
-
-
 ####this.anim.getWidth()
 returns width of canvas element
+
+####this.anim.getDelta()
+returns delta time in seconds between frames
+
+example:
+if you had code like this:  `x += 1;` in your update, after 1 second it will be different depending on frame rate but if you write `x += 100*this.anim.getDelta();` it will be changed by 100 after 1 second on any frame rate 
 
 ---
 
