@@ -1,33 +1,33 @@
 'use strict';
 
-function franim(canvaseId, context) {
-    var width  =  window.innerWidth,
-        height = window.innerHeight,
-        domElement = document.getElementById(canvaseId),
-        isRunning = true,
-        requestId,
-        startTime = 0,
-        lastTime = 0,
-        delta = 0,
-        ctx = domElement.getContext('2d');
+function franim(wrapperId, context) {
+    var wrapperElement = document.getElementById(wrapperId)
+      , width
+      , height
+      , requestId
+      , isRunning = true
+      , startTime = 0
+      , lastTime = 0
+      , delta = 0
+      , canvas = document.createElement('canvas')
+      , ctx = canvas.getContext('2d')
+      , setSize = function(){
+            width = wrapperElement.offsetWidth;
+            height = wrapperElement.offsetHeight;
+            canvas.width = width;
+            canvas.height = height;
+      };
 
-    domElement.width = width;
-    domElement.height = height;
-
-    function recalculate() {
-        if (width  !== window.innerWidth || height !== window.innerHeight) {
-            domElement.width  = window.innerWidth;
-            domElement.height = window.innerHeight;
-            width  = domElement.width;
-            height = domElement.height;
-        }
-    }
+    wrapperElement.appendChild(canvas);
+    canvas.style.display = 'block';
+    setSize();
 
     function animationCallback(time) {
-        if (context.config && context.config.fullSize) {
-            recalculate();
+        if (context.config && context.config.resize) {
+            if (width != wrapperElement.offsetWidth || height != wrapperElement.offsetHeight) {
+                setSize();
+            }
         }
-
         if (typeof context.update === 'function') {
             context.update(time);
             context.draw(ctx);
@@ -54,10 +54,10 @@ function franim(canvaseId, context) {
 
     context.anim = {
         getHeight: function () {
-            return (context.config && context.config.fullSize) ? height : domElement.height;
+            return (context.config && context.config.fullSize) ? height : canvas.offsetHeight;
         },
         getWidth: function () {
-            return (context.config && context.config.fullSize) ? width : domElement.width;
+            return (context.config && context.config.fullSize) ? width : canvas.offsetWidth;
         },
         getDelta: function () {
             return delta;
