@@ -17,9 +17,9 @@
 ## Usage
 
 ```javascript
-var wrap = franim('elementid', {
+var wrap = franim('wrapperid', {
     config : {
-        fullSize: true
+        resize: true
     },
     setup : function setup(ctx) {
         ctx.fillStyle = "black";
@@ -39,9 +39,9 @@ var wrap = franim('elementid', {
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [arguments](#user-content-arguments)
-	- [elementId](#user-content-elementid)
+	- [wrapperid](#user-content-wrapperid)
 	- [context](#user-content-context)
-	- [context.config.fullSize](#user-content-contextconfigfullsize)
+	- [context.config.resize](#user-content-contextconfigresize)
 	- [context.init](#user-content-contextinit)
 	- [context.update](#user-content-contextupdate)
 	- [context.draw](#user-content-contextdraw)
@@ -55,11 +55,11 @@ var wrap = franim('elementid', {
 
 
 ##arguments
-###elementId 
+###wrapperid
 Type: `String`
 *required*
 
-the id of canvas dom element
+the id of canvas wrapper where new canvace elemnt will be appened
 
 ###context 
 Type: `Object`
@@ -67,11 +67,11 @@ Type: `Object`
 
 object which contains required functions for animation loop
 
-###context.config.fullSize
+###context.config.resize
 Type: `Boolean` 
 Default: `false`
 
-if true make canvas element fit whole window
+if true make canvas element resize with its wrapper element
 
 ###context.init
 Type: `Function` 
