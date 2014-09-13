@@ -1,6 +1,6 @@
 {
   "name": "franim",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "canvas helper library",
   "homepage": "https://github.com/Safareli/franim",
   "main": "franim.js",
